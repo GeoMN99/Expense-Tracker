@@ -157,3 +157,53 @@ h2 {
     color: var(--text-secondary);
     text-align: right;
 }
+
+/* Form Section */
+.form-section {
+    background: var(--card);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+.form-grid input:focus,
+.form-grid select:focus {
+    border-color: var(--primary);
+}
+
+.form-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.form-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 0.95rem;
+    cursor: pointer;
+    min-height: 44px;
+    transition: background var(--transition);
+}
+
+#addExpenseBtn {
+    background: var(--primary);
+    color: var(--card);
+    flex: 1;
+}
+
+#addExpenseBtn:active {
+    background: var(--primary-dark);
+}
+
+#cancelEditBtn {
+    background: var(--border);
+    color: var(--text-primary);
+}
