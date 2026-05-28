@@ -3,9 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+    <div class="container">
+        <h1>💰 Expense Tracker</h1>
+
+        <!-- Budget Section -->
+         <div class="budget-section">
+            <div class="budget-input">
+                <label>Monthly Budget (KES)</label>
+                <input type="number" id="budgetInput" placeholder="Enter your budget.." />
+                <button id="setBudgetBtn">Set Budget</button>
+            </div>
+            <div class="budget-stats">
+                <div class="stat-card">
+                    <span>Total Budget</span>
+                    <h3 id="totalBudget">KES 0</h3>
+                </div>
+                <div class="stat-card">
+                    <span>Total Spent</span>
+                    <h3 id="totalSpent">KES 0</h3>
+                </div>
+                <div class="stat-card">
+                    <span>Remaining</span>
+                    <h3 id="remaining">KES 0</h3>
+                </div>
+            </div>
+            <div class="progress-bar-container">
+                <div id="progressBar" class="progress-bar"></div>
+            </div>
+            <p id="progressLabel">0% of budget used</p>
+         </div>
+
+         
+    </div>
     
 </body>
 </html>
