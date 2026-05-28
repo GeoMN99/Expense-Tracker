@@ -53,3 +53,76 @@ h2 {
     color: var(--text-primary);
 }
 
+/* Budget Section */
+.budget-section {
+    background: var(--card);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+}
+
+.budget-input {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.budget-input input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 1rem;
+    outline: none;
+    min-width: 0;
+    transition: border-color var(--transition);
+}
+
+.budget-input input:focus {
+    border-color: var(--primary);
+}
+
+.budget-input button {
+    padding: 10px 16px;
+    background: var(--primary);
+    color: var(--card);
+    border: none;
+    border-radius: var(--radius);
+    font-size: 0.95rem;
+    cursor: pointer;
+    white-space: nowrap;
+    min-height: 44px;
+    transition: background var(--transition);
+}
+
+.budget-input button:active {
+    background: var(--primary-dark);
+}
+
+.budget-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.stat-card {
+    background: var(--card-alt);
+    border-radius: var(--radius);
+    padding: 12px;
+    text-align: center;
+}
+
+.stat-card span {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.stat-card h3 {
+    font-size: 1rem;
+    color: var(--text-primary);
+}
