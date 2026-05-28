@@ -3,6 +3,7 @@
     --primary: #6c63ff;
     --primary-dark: #5a52d5;
     --danger: #ef4444;
+    --danger-light: #fee2e2;
     --warning: #f59e0b;
     --success: #10b981;
     --success-dark: #059669;
@@ -248,4 +249,86 @@ h2 {
 
 #exportBtn:active {
     background: var(--success-dark);
+}
+
+
+/* Expense List */
+.expense-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.expense-item {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--shadow-sm);
+    gap: 10px;
+}
+
+.expense-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.expense-info h4 {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.expense-info p {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 2px;
+}
+
+.expense-amount {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--danger);
+    white-space: nowrap;
+}
+
+.expense-actions {
+    display: flex;
+    gap: 6px;
+}
+
+.expense-actions button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 0.8rem;
+    cursor: pointer;
+    min-height: 36px;
+    transition: opacity var(--transition);
+}
+
+.expense-actions button:active {
+    opacity: 0.7;
+}
+
+.edit-btn {
+    background: var(--card-alt);
+    color: var(--primary);
+}
+
+.delete-btn {
+    background: var(--danger-light);
+    color: var(--danger);
+}
+
+.no-expenses {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 16px;
 }
