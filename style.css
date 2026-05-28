@@ -20,3 +20,36 @@
     --radius-full: 999px;
     --transition: 0.3s ease;
 }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--background);
+    min-height: 100vh;
+    padding: 24px 16px;
+    color: var(--text-primary);
+}
+
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 24px;
+    color: var(--text-primary);
+}
+
+h2 {
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+}
+
