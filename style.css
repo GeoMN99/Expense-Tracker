@@ -126,3 +126,34 @@ h2 {
     font-size: 1rem;
     color: var(--text-primary);
 }
+
+/* Progress Bar */
+.progress-bar-container {
+    background: var(--border);
+    border-radius: var(--radius-full);
+    height: 10px;
+    overflow: hidden;
+    margin-bottom: 6px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--primary);
+    border-radius: var(--radius-full);
+    transition: width 0.4s ease, background 0.4s ease;
+}
+
+.progress-bar.warning {
+    background: var(--warning);
+}
+
+.progress-bar.danger {
+    background: var(--danger);
+}
+
+#progressLabel {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-align: right;
+}
