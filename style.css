@@ -207,3 +207,45 @@ h2 {
     background: var(--border);
     color: var(--text-primary);
 }
+
+/* Filter Section */
+.filter-section {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.filter-section input,
+.filter-section select {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 0.95rem;
+    outline: none;
+    min-width: 0;
+    transition: border-color var(--transition);
+}
+
+.filter-section input:focus,
+.filter-section select:focus {
+    border-color: var(--primary);
+}
+
+#exportBtn {
+    padding: 10px 16px;
+    background: var(--success);
+    color: var(--card);
+    border: none;
+    border-radius: var(--radius);
+    font-size: 0.9rem;
+    cursor: pointer;
+    white-space: nowrap;
+    min-height: 44px;
+    transition: background var(--transition);
+}
+
+#exportBtn:active {
+    background: var(--success-dark);
+}
