@@ -332,3 +332,46 @@ h2 {
     font-size: 0.95rem;
     margin-bottom: 16px;
 }
+
+/* Error */
+.error {
+    background: var(--danger-light);
+    border: 1px solid var(--danger);
+    color: var(--danger);
+    padding: 10px;
+    border-radius: var(--radius);
+    font-size: 0.85rem;
+    margin-top: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Chart */
+.chart-section {
+    background: var(--card);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .budget-stats {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .stat-card h3 {
+        font-size: 0.85rem;
+    }
+
+    .stat-card span {
+        font-size: 0.7rem;
+    }
+}
