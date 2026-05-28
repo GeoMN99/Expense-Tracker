@@ -26,4 +26,21 @@ const searchInput = document.getElementById('searchInput');
 const filterCategory = document.getElementById('filterCategory');
 const exportBtn = document.getElementById('exportBtn');
 const expenseList = document.getElementById('expenseList');
-const noExpenses = document.getElementById('noExpenses');
+
+// Init
+window.addEventListener('load', () => {
+    if (budget > 0) budgetInput.value = budget;
+    expenseDate.value = new Date().toISOString().split('T')[0];
+    render(); 
+});
+
+// Budget
+setBudgetBtn.addEventListener('click', () => {
+    const value = parseFloat(budgetInput.value);
+    if (!value || value <= 0) return;
+    budget = value;
+    localStorage.setItem('budget', budget);
+    render();
+});
+
+// Add/Edit Expense
