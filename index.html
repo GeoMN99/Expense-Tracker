@@ -38,7 +38,30 @@
             <p id="progressLabel">0% of budget used</p>
          </div>
 
-         
+         <!-- Add Expense Form -->
+          <div class="form-section">
+            <h2 id="formTitle">➕ Add Expense</h2>
+            <div class="form-grid">
+                <input type="text" id="expenseName" placeholder="Expense Name" />
+                <input type="number" id="expenseAmount" placeholder="Amount (KES)" />
+                <select id="expenseCategory">
+                    <option value="">Select category</option>
+                    <option value="Food">🍔 Food</option>
+                    <option value="Transport">🚗 Transport</option>
+                    <option value="Entertainment">🎬 Entertainment</option>
+                    <option value="Shopping">🛒 Shopping</option>
+                    <option value="Health">💊 Health</option>
+                    <option value="Bills">💲 Bills</option>
+                    <option value="Ohter">📦 Other</option>
+                </select>
+                <input type="date" id="expenseDate" />
+            </div>
+            <div class="form-buttons">
+                <button id="addExpenseBtn">Add Expense</button>
+                <button id="cancelEditBtn" class="hidden">Cancel</button>
+            </div>
+            <div id="formError" class="error hidden"></div>
+          </div>
     </div>
     
 </body>
