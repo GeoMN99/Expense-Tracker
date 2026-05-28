@@ -78,7 +78,18 @@
             </select>
             <button id="exportBtn">📥 Export CSV</button>
            </div>
+
+           <!-- Expense List -->
+            <div class="expense-list" id="expenseList"></div>
+            <p id="noExpenses" class="no-expenses hidden">No expenses yet. Add one above!</p>
+
+            <!-- Chart -->
+             <div class="chart-section">
+                <h2>📊 Spending by Category</h2>
+                <canvas id="expenseChart"></canvas>
+             </div>
     </div>
-    
+
+    <script src="script.js"></script>
 </body>
 </html>
