@@ -1,0 +1,22 @@
+/* Variables */
+:root {
+    --primary: #6c63ff;
+    --primary-dark: #5a52d5;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --success: #10b981;
+    --success-dark: #059669;
+    --background: #f0f2f5;
+    --card: #ffffff;
+    --card-alt: #f8f9ff;
+    --text-primary: #1a1a2e;
+    --text-secondary: #888888;
+    --text-muted: #aaaaaa;
+    --border: #dddddd;
+    --shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+    --radius: 12px;
+    --radius-lg: 16px;
+    --radius-full: 999px;
+    --transition: 0.3s ease;
+}
