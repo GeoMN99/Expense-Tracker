@@ -44,3 +44,54 @@ setBudgetBtn.addEventListener('click', () => {
 });
 
 // Add/Edit Expense
+addExpenseBtn.addEventListener('click', () => {
+    const name = expenseName.value.trim();
+    const amount = parseFloat(expenseAmount.value);
+    const category = expenseCategory.value;
+    const date = expenseDate.value;
+
+    if (!name || !amount || !category || !date) {
+        showFormError('Please fill in all fields.');
+        return;
+    }
+
+    if (amount <= 0) {
+        showFormError('Amount must be greater than 0.');
+        return;
+    }
+
+    hideFormError();
+
+    if (editingId) {
+        // Update existing expense
+        expenses = expenses.map(e =>
+            e.id === editingId ? { ...e, name, amount, category, date } : e
+        );
+        editingId = null;
+        addExpenseBtn.textContent = 'Add Expense';
+        formTitle.textContent = '➕ Add Expense';
+        cancelEditBtn.classList.add('hidden');
+    } else {
+        // Add new expense
+        const expense = {
+            id: Date.now().toISOString(),
+            name,
+            amount,
+            category,
+            date
+        };
+        expenses.unshift(expense);
+    }
+
+    saveAndRender();
+    clearForm();
+});
+
+cancelEditBtn.addEventListener('click', () => {
+    editingId = null;
+    addExpenseBtn.textContent = 'Add Expense';
+    formTitle.textContent = '➕ Add Expense';
+    cancelEditBtn.classList.add('hidden');
+    clearForm();
+    hideFormError();
+});
