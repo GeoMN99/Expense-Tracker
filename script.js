@@ -213,3 +213,49 @@ function renderChart() {
         }
     });
 }
+
+// Edit & Delete
+function editExpense(id) {
+    const expense = expenses.find(e => e.id === id);
+    if (!expense) return;
+
+    editingId = id;
+    expenseName.value = expense.name;
+    expenseAmount.value = expense.amount;
+    expenseCategory.value = expense.category;
+    expenseDate.value = expense.date;
+
+    addExpenseBtn.textContent = 'Update Expense';
+    formTitle.textContent = '🖊 Edit Expense';
+    cancelEditBtn.classList.remove('hidden');
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function deleteExpense(id) {
+    if (!confirm('Are you sure you want to delete this expense?')) return;
+    expenses = expenses.filter(e => e.id !== id);
+    saveAndRender();
+}
+
+// Helpers
+function saveAndRender() {
+    localStorage.setItem('expenses', JSON.stringify(expenses));
+    render();
+}
+
+function clearForm() {
+    expenseName.value = '';
+    expenseAmount.value = '';
+    expenseCategory = '';
+    expenseDate.value = new Date().toISOString().split('T')[0];
+}
+
+function showFormError(msg) {
+    formError.textContent = msg;
+    formError.classList.remove('hidden');
+}
+
+function hideFormError() {
+    formError.classList.add('hidden');
+}
