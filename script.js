@@ -145,7 +145,7 @@ function updateBudgetStats() {
 }
 
 function renderExpenses() {
-    const search = searchInput.value.tolowerCase();
+    const search = searchInput.value.toLowerCase();
     const category = filterCategory.value;
 
     const filtered = expenses.filter(e => {
