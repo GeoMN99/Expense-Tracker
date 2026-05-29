@@ -175,3 +175,41 @@ function renderExpenses() {
         </div>
     `).join('');
 }
+
+function renderChart() {
+    const categoryTotals = {};
+    expenses.forEach(e => {
+        categoryTotals[e.category] = (categoryTotals[e.category] || 0) + e.amount;
+    });
+
+    const labels = Object.keys(categoryTotals);
+    const values = Object.values(categoryTotals);
+    const colors = ['#6c63ff', '#ef4444', '#f59e0b', '#10b981', '#3b82f6', '#ec4899', '#8b5cf6']
+
+    if (chart) chart.destroy();
+
+    if (labels.length === 0) return;
+
+    const ctx = document.getElementById('expensesChart').getContext('2d');
+    chart = new chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels,
+            datasets: [{
+                data: values,
+                backgroundColor: colors.slice(0, labels.length),
+                borderWidth: 2,
+                borderColor: '#fff'
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    positions: 'bottoms',
+                    labels: { padding:16, font: { size: 13 } }
+                }
+            }
+        }
+    });
+}
