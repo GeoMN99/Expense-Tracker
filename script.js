@@ -95,3 +95,26 @@ cancelEditBtn.addEventListener('click', () => {
     clearForm();
     hideFormError();
 });
+
+// Filter & Search
+searchInput.addEventListener('input', render);
+filterCategory.addEventListener('change', render);
+
+// Export CSV
+exportBtn.addEventListener('click', () => {
+    if (expenses.length === 0) return;
+
+    const headers = ['Name', 'Amount (KES)', 'Category', 'Date'];
+    const rows = expenses.map(e => [e.name, e.amount, e.category, e.date]);
+    const csvContent = [headers, ...rows]
+        .map(row => row.join(','))
+        .join('\n');
+    
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'expenses.csv';
+    a.click();
+    URL.revokeObjectURL(url);
+});
