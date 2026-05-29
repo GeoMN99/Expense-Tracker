@@ -118,3 +118,60 @@ exportBtn.addEventListener('click', () => {
     a.click();
     URL.revokeObjectURL(url);
 });
+
+// Render
+function render() {
+    updateBudgetStats();
+    renderExpenses();
+    renderChart();
+}
+
+function updateBudgetStats() {
+    const totalSpent = expenses.reduce((sum, e) => sum + e.amount, 0);
+    const remaining = budget - totalSpent
+    const percentage = budget > 0 ? Math.min((totalSpent / budget) * 100, 100) : 0;
+
+    totalBudgetEl.textContent = `KES ${budget.toLocaleString()}`;
+    totalSpentEl.textContent = `KES ${totalSpent.toLocaleString()}`;
+    remainingEl.textContent = `KES ${remaining.toLocaleString()}`;
+    remainingEl.style.color = remaining < 0 ? '#ef4444' : '#10b981';
+
+    progressBar.style.width = `${percentage}%`;
+    progressBar.className = 'progress-bar';
+    if (percentage >= 90) progressBar.classList.add('danger');
+    else if (percentage >= 70) progressBar.classList.add('warning');
+
+    progressLabel.textContent = `${Math.round(percentage)}% of budget used`;
+}
+
+function renderExpenses() {
+    const search = searchInput.value.tolowerCase();
+    const category = filterCategory.value;
+
+    const filtered = expenses.filter(e => {
+        const matchesSearch = e.name.tolowerCase().includes(search);
+        const mathesCategory = category ? e.category === category : true;
+        return matchesSearch && mathesCategory;
+    });
+
+    if (filtered.length === 0) {
+        expenseList.innerHTML = '';
+        noExpenses.classList.remove('hidden');
+        return;
+    }
+
+    noExpenses.classList.add('hidden');
+    expenseList.innerHTML = filtered.map(e => `
+        <div class="expense-item">
+            <div class="expense-info">
+               <h4>${e.name}</h4>
+               <p>${e.category} • ${new Date(e.date).toLocaleDateString('en-GB')}</p>
+            </div>
+            <span class="expense-amount">KES ${e.amount.toLocaleDateString()}</span>
+            <div class="expense-actions">
+                <button class="edit-btn" onclick="editExpense('${e.id}')">🖊 Edit</button>
+                <button class="delete-btn" onclick="deleteExpense('${e.id}')">🗑 Delete</button>
+            </div>
+        </div>
+    `).join('');
+}
