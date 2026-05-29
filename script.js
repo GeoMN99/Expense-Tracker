@@ -1,6 +1,6 @@
 // State
 let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
-let budget = parseFloat(localStorage.getItem('budget')) || [];
+let budget = parseFloat(localStorage.getItem('budget')) || 0;
 let editingId = null;
 let chart = null;
 
@@ -26,6 +26,7 @@ const searchInput = document.getElementById('searchInput');
 const filterCategory = document.getElementById('filterCategory');
 const exportBtn = document.getElementById('exportBtn');
 const expenseList = document.getElementById('expenseList');
+const noExpenses = document.getElementById('noExpenses');
 
 // Init
 window.addEventListener('load', () => {
@@ -74,7 +75,7 @@ addExpenseBtn.addEventListener('click', () => {
     } else {
         // Add new expense
         const expense = {
-            id: Date.now().toISOString(),
+            id: Date.now().toString(),
             name,
             amount,
             category,
@@ -149,7 +150,7 @@ function renderExpenses() {
     const category = filterCategory.value;
 
     const filtered = expenses.filter(e => {
-        const matchesSearch = e.name.tolowerCase().includes(search);
+        const matchesSearch = e.name.toLowerCase().includes(search);
         const mathesCategory = category ? e.category === category : true;
         return matchesSearch && mathesCategory;
     });
@@ -165,9 +166,9 @@ function renderExpenses() {
         <div class="expense-item">
             <div class="expense-info">
                <h4>${e.name}</h4>
-               <p>${e.category} • ${new Date(e.date).toLocaleDateString('en-GB')}</p>
+               <p>${e.category} • ${new Date(e.date).toLocaleString('en-GB')}</p>
             </div>
-            <span class="expense-amount">KES ${e.amount.toLocaleDateString()}</span>
+            <span class="expense-amount">KES ${e.amount.toLocaleString()}</span>
             <div class="expense-actions">
                 <button class="edit-btn" onclick="editExpense('${e.id}')">🖊 Edit</button>
                 <button class="delete-btn" onclick="deleteExpense('${e.id}')">🗑 Delete</button>
@@ -190,8 +191,8 @@ function renderChart() {
 
     if (labels.length === 0) return;
 
-    const ctx = document.getElementById('expensesChart').getContext('2d');
-    chart = new chart(ctx, {
+    const ctx = document.getElementById('expenseChart').getContext('2d');
+    chart = new Chart(ctx, {
         type: 'doughnut',
         data: {
             labels,
@@ -206,7 +207,7 @@ function renderChart() {
             responsive: true,
             plugins: {
                 legend: {
-                    positions: 'bottoms',
+                    positions: 'bottom',
                     labels: { padding:16, font: { size: 13 } }
                 }
             }
@@ -247,7 +248,7 @@ function saveAndRender() {
 function clearForm() {
     expenseName.value = '';
     expenseAmount.value = '';
-    expenseCategory = '';
+    expenseCategory.value = '';
     expenseDate.value = new Date().toISOString().split('T')[0];
 }
 
